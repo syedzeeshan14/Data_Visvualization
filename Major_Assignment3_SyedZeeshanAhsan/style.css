@@ -1,0 +1,363 @@
+/* General Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+
+/* Header Styles */
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+
+/* Main Content Layout */
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 600px;
+}
+
+.controls-panel {
+    flex: 0 0 280px;
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-right: 2px solid #e9ecef;
+    overflow-y: auto;
+    max-height: 800px;
+}
+
+.visualization-panel {
+    flex: 1;
+    min-width: 600px;
+    position: relative;
+    background-color: #ffffff;
+}
+
+
+/* Controls Styles */
+
+.controls-panel h3 {
+    color: #495057;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.control-group {
+    margin-bottom: 25px;
+}
+
+.control-group label {
+    display: block;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb:hover {
+    background: #764ba2;
+    transform: scale(1.2);
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.control-group input[type="range"]::-moz-range-thumb:hover {
+    background: #764ba2;
+    transform: scale(1.2);
+}
+
+.control-group span {
+    display: inline-block;
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.1em;
+    min-width: 50px;
+}
+
+
+/* Legend Styles */
+
+.legend {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #dee2e6;
+}
+
+.legend h4 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.legend-item span {
+    font-size: 0.9em;
+    color: #495057;
+}
+
+
+/* SVG and Network Styles */
+
+#network-svg {
+    width: 100%;
+    height: 800px;
+    display: block;
+}
+
+circle {
+    fill-opacity: 0.9;
+    stroke: #fff;
+    stroke-width: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+circle:hover {
+    fill-opacity: 1;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.8));
+}
+
+line {
+    stroke: #909090;
+    stroke-opacity: 0.6;
+    pointer-events: none;
+}
+
+.label {
+    font-size: 11px;
+    font-family: 'Segoe UI', sans-serif;
+    fill: #333;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 500;
+}
+
+
+/* Inactive State */
+
+.inactive {
+    opacity: 0.2 !important;
+    transition: opacity 0.3s ease;
+}
+
+.node.inactive circle {
+    fill-opacity: 0.2;
+}
+
+.link.inactive {
+    stroke-opacity: 0.1;
+}
+
+
+/* Tooltip Styles */
+
+.tooltip {
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 400px;
+    pointer-events: none;
+}
+
+.tooltip-content {
+    padding: 15px;
+}
+
+.tooltip h4 {
+    color: #667eea;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+.tooltip p {
+    margin-bottom: 8px;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.tooltip strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.tooltip ul {
+    margin: 8px 0 12px 20px;
+    padding: 0;
+}
+
+.tooltip li {
+    margin-bottom: 6px;
+    color: #495057;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+#tooltip-affiliation {
+    font-size: 0.85em;
+    color: #6c757d;
+    line-height: 1.4;
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+    }
+    .controls-panel {
+        flex: 1;
+        border-right: none;
+        border-bottom: 2px solid #e9ecef;
+        max-height: none;
+    }
+    .visualization-panel {
+        min-width: 100%;
+    }
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    header {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    header p {
+        font-size: 0.9em;
+    }
+    .controls-panel {
+        padding: 15px;
+    }
+    #network-svg {
+        height: 600px;
+    }
+    .tooltip {
+        max-width: 90vw;
+        font-size: 0.9em;
+    }
+}
+
+
+/* Scrollbar Styling */
+
+.controls-panel::-webkit-scrollbar,
+#tooltip-affiliation::-webkit-scrollbar {
+    width: 8px;
+}
+
+.controls-panel::-webkit-scrollbar-track,
+#tooltip-affiliation::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.controls-panel::-webkit-scrollbar-thumb,
+#tooltip-affiliation::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.controls-panel::-webkit-scrollbar-thumb:hover,
+#tooltip-affiliation::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
