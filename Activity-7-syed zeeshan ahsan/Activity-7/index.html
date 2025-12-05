@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        
+        svg {
+            width: 40vw;
+            height: 40vw;
+        }
+        /* Styling for the container of scatter plots */
+        
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Container for the list */
+        
+        .list-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50vw;
+            padding: 20px;
+            background-color: #f3f3f3;
+            border-left: 1px solid #ccc;
+            overflow-y: auto;
+        }
+        /* Header styling */
+        
+        .list-container h3 {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        /* Styling for the list */
+        
+        #selected-list {
+            padding: 10px;
+            list-style-type: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-height: 100%;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+        }
+        /* Styling for individual list items */
+        
+        #selected-list li {
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        #selected-list ul {
+            margin: 50px;
+        }
+        
+        #selected-list li:last-child {
+            border-bottom: none;
+        }
+        
+        ul {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/scatterplot.problem.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div>
+        <svg viewBox="0 0 1000 1000" id="figure1">
+    </svg>
+        <svg viewBox="0 0 1000 1000" id="figure2">
+    </svg>
+    </div>
+    <div>
+        <ul id="selected-list"></ul>
+    </div>
+
+    <script>
+        d3.csv("./data/car_sample_data.csv")
+            .then(
+                data => {
+
+                    scatter_plot(
+                        data = data,
+                        "#figure1",
+                        title = "MPG vs Price",
+                        xCol = "Price",
+                        yCol = "MPG",
+                        rCol = "Weight",
+                        legend = [],
+                        colorCol = "Country",
+                        margin = 150
+                    )
+
+                    ////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////
+                    // Missing Part 1
+                    ////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////
+                    scatter_plot(
+                        data = data,
+                        "#figure2",
+                        title = "MPG vs EngineSizeCI",
+                        xCol = "EngineSizeCI",
+                        yCol = "MPG",
+                        rCol = "Weight",
+                        legend = [],
+                        colorCol = "Country",
+                        margin = 150
+                    )
+
+
+                    document.addEventListener("mousemove", event => {
+                        const listBox = d3.select(`#selected-list`);
+
+                        const selectedPoints = Array.from(document.querySelectorAll(".selected"))
+                        const ids = [...new Set(selectedPoints.map(d => +d.id.split(" ")[0].slice(3)))]
+
+                        d3.select("selected-list")
+                        listBox.selectAll("li").remove()
+                        if (ids.length > 0) {
+                            listBox.selectAll(".listVals")
+                                .data(ids)
+                                .enter()
+                                ////////////////////////////////////////////////////////////////////////
+                                ////////////////////////////////////////////////////////////////////////
+                                ////////////////////////////////////////////////////////////////////////
+                                // Missing Part 2
+                                ////////////////////////////////////////////////////////////////////////
+                                ////////////////////////////////////////////////////////////////////////
+                                ////////////////////////////////////////////////////////////////////////
+                                .append("li")
+                                .text(d => {
+                                    ////////////////////////////////////////////////////////////////////////
+                                    ////////////////////////////////////////////////////////////////////////
+                                    ////////////////////////////////////////////////////////////////////////
+                                    // Missing Part 3
+                                    ////////////////////////////////////////////////////////////////////////
+                                    ////////////////////////////////////////////////////////////////////////
+                                    ////////////////////////////////////////////////////////////////////////
+                                    return `${data[d].Model} - ${data[d].Type}`
+                                })
+                                .exit()
+                        }
+
+
+
+                    })
+
+                }
+            )
+    </script>
+</body>
+
+</html>
